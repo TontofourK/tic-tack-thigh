@@ -227,7 +227,7 @@ footer a {
 }
 
 .modal-contents {
-  /* transform: translateY(-80px); */
+  transform: translateY(-80px);
   height: 150px;
   width: 100%;
   max-width: 300px;

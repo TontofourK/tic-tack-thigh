@@ -25,29 +25,47 @@
               <i class="fa-solid fa-chevron-down"></i>
               </button>
 
-              <!-- <div class="items border hidden" >
-                <button data-id="reset-btn">Reset</button>
-                <button data-id="new-round-btn">New Round</button>
-              </div> -->
+              <div class="items border hidden" >
+                <button >Reset</button>
+                <button >New Round</button>
+              </div>
             </div>
             
             <!-- Gameboard -->
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
+            <div class="square shadow"></div>
 
             <!-- Scoreboard -->
-            <div class="score"></div>
-            <div class="score"></div>
-            <div class="score"></div>
+            <div class="score shadow" style="background-color: var(--turquoise)">
+              <p>Player 1</p>
+              <span data-id="p1-wins">0 Wins</span>
+            </div>
+            <div class="score shadow" style="background-color: var(--light-gray)">
+              <p>Ties</p>
+              <span data-id="ties">0</span>
+            </div>
+            <div class="score shadow" style="background-color: var(--yellow)">
+              <p>Player 2</p>
+              <span data-id="p2-wins">0 Wins</span>
+          </div>
         </div>
     </main>
+
+    <!-- Modal that opens after game ends -->
+    <div class="modal">
+      <div class="modal-contents">
+        <p>Player 1 wins</p>
+        <button>Play again</button>
+      </div>
+    </div>
+
     <footer>
       <p>
         Original project by
