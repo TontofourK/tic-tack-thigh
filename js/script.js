@@ -35,6 +35,11 @@ const App = {
 
             square.addEventListener("click", (event) => {
                 console.log(`square with id ${event.target.id} was clicked`);
+
+                const icon = document.createElement("i");
+                icon.classList.add("fa-solid", "fa-x", "turquoise");
+
+                event.target.replaceChildren(icon);
             });
         });
     },
