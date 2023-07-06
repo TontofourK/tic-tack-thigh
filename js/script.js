@@ -7,6 +7,10 @@ const App = {
         newRoundBtn: document.querySelector('[data-id="new-round-btn"]'),
         square: document.querySelectorAll('[data-id="square"]'),
     },
+
+    state: {
+        currentPlayer: 1,
+    },
     
     init(){
         App.registerEventListners()
@@ -35,11 +39,28 @@ const App = {
 
             square.addEventListener("click", (event) => {
                 console.log(`square with id ${event.target.id} was clicked`);
+                console.log(`Current Player is ${App.state.currentPlayer}`);
 
+                
+                if(square.hasChildNodes()) {
+                    return
+                }
+
+                const currentPlayer = App.state.currentPlayer;
+                
                 const icon = document.createElement("i");
-                icon.classList.add("fa-solid", "fa-x", "turquoise");
 
-                event.target.replaceChildren(icon);
+                if(currentPlayer === 1){
+
+                    icon.classList.add("fa-solid", "fa-x", "turquoise");
+                }else{
+                    icon.classList.add("fa-solid", "fa-o", "yellow");
+
+                }
+
+                App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1
+
+                square.replaceChildren(icon);
             });
         });
     },
