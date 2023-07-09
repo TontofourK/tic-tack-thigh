@@ -9,7 +9,7 @@ const App = {
     },
 
     state: {
-        currentPlayer: 1,
+        moves: [],
     },
     
     init(){
@@ -39,17 +39,22 @@ const App = {
 
             square.addEventListener("click", (event) => {
                 console.log(`square with id ${event.target.id} was clicked`);
-                console.log(`Current Player is ${App.state.currentPlayer}`);
-
+                //check if there is already a play, if so, return early
                 
                 if(square.hasChildNodes()) {
                     return
                 }
-
-                const currentPlayer = App.state.currentPlayer;
+                
+                //check which player to play
+                const lastmove = App.state.moves.at(-1);
+                const getOppositePlayer = (playerId) => (playerId === 1 ? 2 : 1);
+                const currentPlayer = 
+                App.state.moves.length === 0
+                ? 1
+                : getOppositePlayer(lastmove.playerId);
                 
                 const icon = document.createElement("i");
-
+                
                 if(currentPlayer === 1){
 
                     icon.classList.add("fa-solid", "fa-x", "turquoise");
@@ -58,9 +63,29 @@ const App = {
 
                 }
 
+                App.state.moves.push({
+                    spuareId: +square.id,
+                    playerId: currentPlayer,
+                });
+              
                 App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1
 
+                console.log(App.state);
+
                 square.replaceChildren(icon);
+
+                //check if the game ends
+                const winningPatterns = [
+                    [1, 2, 3],
+                    [1, 5, 9],
+                    [1, 4, 7],
+                    [2, 5, 8],
+                    [3, 5, 7],
+                    [3, 6, 9],
+                    [4, 5, 6],
+                    [7, 8, 9],
+                ];
+
             });
         });
     },
